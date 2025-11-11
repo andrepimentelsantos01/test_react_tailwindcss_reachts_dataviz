@@ -4,8 +4,6 @@ Ambiente de visualização de dados moderno criado com **React.js**, **TailwindC
 
 O projeto demonstra como unir **frontend** e **data visualization** em um layout dinâmico, elegante e responsivo, com **tema claro/escuro**, **filtros dinâmicos** e **gráficos interativos**.
 
-🔗 **Repositório:** [github.com/andrepimentelsantos01/test_react_tailwindcss_recharts_dataviz](https://github.com/andrepimentelsantos01/test_react_tailwindcss_reachts_dataviz)
-
 ---
 
 ## 🚀 Tecnologias Utilizadas
