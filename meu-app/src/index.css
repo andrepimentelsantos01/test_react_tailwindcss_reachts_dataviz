@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Tema Cyberpunk */
 body {
   @apply bg-black text-gray-200;
   background-image: radial-gradient(circle at top, rgba(100,0,255,0.2), transparent 60%), 

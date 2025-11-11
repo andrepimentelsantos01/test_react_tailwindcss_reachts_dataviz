@@ -1,4 +1,3 @@
-// src/components/DashboardCharts.jsx
 import React, { useState, useMemo, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import clsx from "clsx";
@@ -13,17 +12,9 @@ import {
   Grid, ArrowLeft, ArrowRight, Settings, Search, Clock, User, Sun, Moon
 } from "lucide-react";
 
-/**
- * DashboardCharts.jsx
- * - Único arquivo (menu lateral + conteúdo)
- * - Tema dark <-> light com persistência (localStorage)
- * - Labels corporativas em PT-BR
- * - Toggle de tema na NAVBAR (antes do search)
- * - Sidebar renomeada para funcionalidades de dados
- */
 
 export default function DashboardCharts() {
-  // tema com persistência
+
   const [theme, setTheme] = useState(() => {
     try {
       return localStorage.getItem("corp_theme") || "dark";
@@ -36,7 +27,7 @@ export default function DashboardCharts() {
     try { localStorage.setItem("corp_theme", theme); } catch {}
   }, [theme]);
 
-  // UI
+
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [period, setPeriod] = useState("all");
   const [metric, setMetric] = useState("sales");
@@ -79,14 +70,14 @@ export default function DashboardCharts() {
 
   const COLORS = ["#60a5fa", "#7c3aed", "#e879f9", "#06b6d4", "#a78bfa"];
 
-  // derived
+
   const filteredData = useMemo(() => {
     if (period === "first-half") return rawData.slice(0, 3);
     if (period === "second-half") return rawData.slice(3);
     return rawData;
   }, [rawData, period]);
 
-  // animations
+
   const containerVariants = {
     hidden: { opacity: 0, y: 8 },
     show: { opacity: 1, y: 0, transition: { staggerChildren: 0.06 } },
@@ -96,16 +87,16 @@ export default function DashboardCharts() {
     show: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.35 } },
   };
 
-  // theme classes
+
   const isDark = theme === "dark";
   const rootBg = isDark ? "bg-[#071022] text-slate-100" : "bg-[#e3e5e8] text-gray-900";
   const sidebarBg = isDark ? "bg-gradient-to-b from-[#0b1220] to-[#08151f]" : "bg-white shadow-sm";
   const cardBg = isDark ? "bg-[#071827] border border-slate-800" : "bg-white border border-gray-200";
   const inputBg = isDark ? "bg-[#0b1624] border border-slate-800 text-slate-200" : "bg-white border border-gray-200 text-gray-900";
   const subtleText = isDark ? "text-slate-400" : "text-gray-500";
-  const navHighlight = isDark ? "bg-[#081827]" : "bg-[#f3f4f6]"; // navbar/inputs highlight in light
+  const navHighlight = isDark ? "bg-[#081827]" : "bg-[#f3f4f6]";
 
-  // sidebar labels (dados)
+
   const sidebarItems = [
     { key: "insights", icon: <Home size={16} />, label: "Insights" },
     { key: "correlations", icon: <Grid size={16} />, label: "Correlações" },
@@ -161,7 +152,7 @@ export default function DashboardCharts() {
             ))}
           </nav>
 
-          {/* RODAPÉ: perfil + toggle removido daqui (moved to navbar) */}
+          {}
           <div className={clsx("px-3 py-3 border-t", isDark ? "border-slate-800" : "border-gray-200")}>
             <div className="flex items-center gap-3">
               <div className={clsx("w-10 h-10 rounded-full flex items-center justify-center border", isDark ? "bg-slate-900 border-slate-700" : "bg-gray-100 border-gray-200")}>
@@ -190,7 +181,7 @@ export default function DashboardCharts() {
           </div>
 
           <div className="flex items-center gap-3">
-            {/* THEME TOGGLE (moved to navbar, before search) */}
+            {}
             <div className="flex items-center">
               <ThemeToggle theme={theme} setTheme={setTheme} isDark={isDark} />
             </div>
@@ -411,12 +402,9 @@ export default function DashboardCharts() {
   );
 }
 
-/* ----------------------
-   ThemeToggle Component
-   placed at bottom of file for single-file convenience
-   ---------------------- */
+
 function ThemeToggle({ theme, setTheme, isDark }) {
-  // animated sliding toggle
+ 
   return (
     <button
       onClick={() => setTheme(prev => prev === "dark" ? "light" : "dark")}
@@ -435,7 +423,7 @@ function ThemeToggle({ theme, setTheme, isDark }) {
             className={clsx("w-5 h-5 rounded-full bg-white absolute top-0.5")}
             style={{ left: theme === "dark" ? 2 : 22 }}
           />
-          {/* icons inside the toggle */}
+          {}
           <div className="absolute left-1 top-0.5 text-xs" style={{ opacity: theme === "dark" ? 1 : 0 }}>
             <Moon size={12} />
           </div>

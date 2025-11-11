@@ -1,4 +1,3 @@
-// src/data.js
 export const dataLine = [
   { month: 'Jan', value: 400 },
   { month: 'Feb', value: 300 },
